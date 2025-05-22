@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Examen.Infrastructure
 {
-    public class GenericRepository<T> :IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private  DbContext context;
-        private  DbSet<T> dbSet;
-       
+        private DbContext context;
+        private DbSet<T> dbSet;
+
         public GenericRepository(DbContext ctx)
         {
             context = ctx;
@@ -27,7 +27,7 @@ namespace Examen.Infrastructure
         {
             dbSet.Remove(entity);
         }
-        public void Delete(Expression<Func<T,bool>> where)
+        public void Delete(Expression<Func<T, bool>> where)
         {
             dbSet.RemoveRange(dbSet.Where(where));
         }
@@ -47,9 +47,9 @@ namespace Examen.Infrastructure
         public IEnumerable<T> GetMany(Expression<Func<T, bool>> where)
         {
             if (where != null)
-            return  dbSet.Where(where).AsEnumerable();
+                return dbSet.Where(where);
             else
-            return dbSet.AsEnumerable();
+                return dbSet.AsEnumerable();
         }
         public void Update(T entity)
         {

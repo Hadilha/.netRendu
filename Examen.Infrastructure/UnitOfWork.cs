@@ -10,7 +10,7 @@ namespace Examen.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private  DbContext context;
+        private DbContext context;
 
         public UnitOfWork(DbContext ctx)
         {
@@ -19,7 +19,7 @@ namespace Examen.Infrastructure
 
         public IGenericRepository<T> Repository<T>() where T : class
         {
-           return new GenericRepository<T>(context);
+            return new GenericRepository<T>(context);
         }
         public int Save()
         {
@@ -41,7 +41,7 @@ namespace Examen.Infrastructure
                 disposedValue = true;
             }
         }
-     
+
         public void Dispose()
         {
             Dispose(disposing: true);

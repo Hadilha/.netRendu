@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Examen.ApplicationCore.Interfaces
 {
-    public interface IUnitOfWork:IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         int Save();
         IGenericRepository<TEntity> Repository<TEntity>() where TEntity : class;
     }
+
 }

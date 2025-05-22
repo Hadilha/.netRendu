@@ -8,12 +8,18 @@ namespace Examen.ApplicationCore.Domain
 {
     public class Bilan
     {
-        public string CodePatient { get; set; } = string.Empty;
-        public int CodeInfirmier { get; set; }
         public DateTime DatePrelevement { get; set; }
-        public string EmailMedecin { get; set; } = string.Empty;
+        public string EmailMedecin { get; set; }
         public bool Paye { get; set; }
-        public Infirmier Infirmier { get; set; } = null!;
-        public Patient Patient { get; set; } = null!;
+
+        public int InfirmierFk { get; set; }
+        public virtual Infirmier Infirmier { get; set; }
+
+        public virtual  Patient Patient { get; set; }
+        public string PatientFk { get; set; }
+
+
+        public virtual ICollection<Analyse> Analyses { get; set; }
+
     }
 }
